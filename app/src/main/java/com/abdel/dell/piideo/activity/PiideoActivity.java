@@ -52,6 +52,8 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
 
     private static final String TAG = PiideoActivity.class.getSimpleName();
 
+    private int test = 0;
+
     ValidUtils validUtils;
 
     private ImageButton btnCamera, btnGallery;
