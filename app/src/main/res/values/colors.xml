@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--App material design-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#727272</color>
+
+    <!-- Others -->
+    <color name="red">#FF0000</color>
+    <color name="bkg_card">#8C9EFF</color>
+    <color name="green">#008000</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="grey">#9D9FA2</color>
+    <color name="metallic_silver">#BCC6CC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_trans">#99FFFFFF</color>
+    <color name="blue_grey">#455A64</color>
+    <color name="dark_blue_grey">#11263d</color>
+    <color name="maroon">#990041</color>
+    <color name="dark_grey">#666666</color>
+    <color name="year">#888888</color>
+
+    <color name="content_color">#6d6d6d</color>
+</resources>

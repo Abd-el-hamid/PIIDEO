@@ -1,0 +1,47 @@
+<resources>
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+    </style>
+
+    <!-- Alert dialog theme -->
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Change buttons text to bold -->
+        <item name="android:textStyle">bold</item>
+        <!-- Used for the buttons #5fa3d0-->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/textColorSecondary</item>
+        <!-- Used for the background -->
+        <item name="android:background">@drawable/radius_borders</item>
+        <!-- Used for the dialog title style -->
+        <item name="android:windowTitleStyle">@style/MyTitleTextStyle</item>
+    </style>
+
+    <!-- Alert dialog title style -->
+    <style name="MyTitleTextStyle">
+        <!-- <item name="android:textStyle">bold</item> -->
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+    </style>
+
+
+    <style name="ThemeSpinner">
+        <!-- Default color for the dropdown arrow and line -->
+        <item name="colorControlNormal">@color/white</item>
+        <!-- Default color for the dropdown arrow and line when clicked -->
+        <item name="colorAccent">@android:color/black</item>
+        <!--Color for the text-->
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+</resources>

@@ -1,0 +1,8 @@
+<android.support.design.widget.TabLayout xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    local:tabIndicatorColor="@color/white"
+    local:tabSelectedTextColor="@color/white"
+    local:tabTextColor="@color/white_trans" />
