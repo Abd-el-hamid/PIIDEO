@@ -20,15 +20,9 @@ public class PiideoHelper {
 
     public static void createPiideo(String image, String audio, final Context context) {
 
-       // final String audio = getExternalDirectoryPath() + "/Download/cartoon001.mp3";
+        /* Piideo creation *************/
+        final String outVideo = getExternalDirectoryPath() + "/Download/piideo.mp4";
 
-        final String outVideo = getExternalDirectoryPath() + "/Download/video001.mp4";
-
-        int duration = 3;
-
-//        String[] cmd = {"-loop", "1", "-y", "-i", image, "-vcodec", "libx264",
-//                "-acodec", "aac", "-t", String.valueOf(duration), "-pix_fmt", "yuvj422p", "-s", "720x480", "-color_range", "2", outVideo};
-//was 192k....-s 720x480
         String[] cmd = {"-loop", "1", "-i", image, "-i", audio, "-c:v", "libx264", "-tune", "stillimage", "-c:a", "aac", "-b:a", "64k", "-s", "cif", "-shortest", "-y", outVideo};
 
         final FFmpeg ffmpeg = MyApplication.getInstance().getFfmpegInstance();
@@ -71,7 +65,7 @@ public class PiideoHelper {
                     Log.w(null, "Cutting video finished");
                     System.out.println("cut finished");
                     Toast.makeText(context, "Creation finished", Toast.LENGTH_SHORT).show();
-                    MyApplication.getInstance().stopService(outVideo, context);
+                    MyApplication.getInstance().stopService(outVideo);
                     //addAudio(ffmpeg, audio, outVideo, context);
                 }
             });

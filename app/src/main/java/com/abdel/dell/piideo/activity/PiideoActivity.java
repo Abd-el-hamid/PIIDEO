@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.provider.MediaStore;
@@ -194,7 +195,7 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK ) {
+        if (resultCode == RESULT_OK) {
 
             switch (requestCode) {
                 case ConstantsCustomGallery.REQUEST_CODE:
@@ -206,30 +207,29 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
 
                         Uri uri = Uri.fromFile(new File(images.get(i).path));
 
-                        Glide.with(this).load(uri)
-                                .placeholder(R.color.colorAccent)
-                                .override(400, 400)
-                                .crossFade()
-                                .centerCrop()
-                                .into(imageView);
+                        showImage(uri, imageView);
 
-                        txImageSelects.setText(String.valueOf(i + 1) + ". " + String.valueOf(uri));
+//                        txImageSelects.setText(String.valueOf(i + 1) + ". " + String.valueOf(uri));
                     }
                     break;
                 case CAMERA_REQUEST:
 
-                        //imgPath = getRealPathFromURI(PiideoActivity.this, imgUri);
+                    //imgPath = getRealPathFromURI(PiideoActivity.this, imgUri);
 
                     new ImageCompressionAsyncTask().execute(imgUri.toString());
-                    Glide.with(this).load(imgUri)
-                                .placeholder(R.color.colorAccent)
-                                .override(400, 400)
-                                .crossFade()
-                                .centerCrop()
-                                .into(imageView);
+                    showImage(imgUri, imageView);
                     break;
             }
         }
+    }
+
+    private void showImage(Uri uri, ImageView imgView) {
+        Glide.with(this).load(uri)
+                .placeholder(R.color.colorAccent)
+                .override(400, 400)
+                .crossFade()
+                .centerCrop()
+                .into(imgView);
     }
 
     private class ImageCompressionAsyncTask extends AsyncTask<String, Void, String> {
@@ -386,7 +386,8 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
 
     @Override
     protected void onPause() {
-        //validUtils.hideProgressDialog();
+        if (validUtils.progress != null && validUtils.progress.isShowing())
+            validUtils.hideProgressDialog();
         super.onPause();
     }
 
@@ -409,8 +410,15 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
             super.onReceiveResult(resultCode, resultData);
             if (resultCode == 18 && resultData != null) {
                 boolean finished = resultData.getBoolean("finished", false);
-                if (finished)
+                String videoPath = resultData.getString("videoPath");
+                if (finished) {
                     validUtils.hideProgressDialog();
+
+                    Intent videoIntent = new Intent(PiideoActivity.this, PiideoPlayerActivity.class);
+                    videoIntent.putExtra("videoPath", videoPath);
+                    videoIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(videoIntent);
+                }
             }
         }
     }

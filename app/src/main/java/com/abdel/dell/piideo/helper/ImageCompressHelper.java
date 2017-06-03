@@ -133,7 +133,7 @@ public class ImageCompressHelper {
             out = new FileOutputStream(filename);
 
 //          write the compressed bitmap at the destination specified by filename.
-            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
+            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

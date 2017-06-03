@@ -25,6 +25,7 @@ public class PiideoService extends Service {
 
     private static String TAG = PiideoService.class.getSimpleName();
     private ResultReceiver resultReceiver;
+    private String videoPath;
 
     @Override
     public void onCreate() {
@@ -41,16 +42,20 @@ public class PiideoService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        resultReceiver = intent.getParcelableExtra("receiver");
+        final boolean stop = intent.getBooleanExtra("stop", false);
 
-        String imgPath = intent.getStringExtra("imgPath");
-        String audioPath = intent.getStringExtra("audioPath");
+        if(stop){
+            videoPath = intent.getStringExtra("videoPath");
+            stopSelf();
+        }else {
 
-        PiideoHelper.createPiideo(imgPath, audioPath, PiideoService.this);
+            resultReceiver = intent.getParcelableExtra("receiver");
 
-//        Bundle bundle = new Bundle();
-//        bundle.putBoolean("finished", true);
-//        resultReceiver.send(18, bundle);
+            String imgPath = intent.getStringExtra("imgPath");
+            String audioPath = intent.getStringExtra("audioPath");
+
+            PiideoHelper.createPiideo(imgPath, audioPath, PiideoService.this);
+        }
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -58,9 +63,9 @@ public class PiideoService extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(PiideoService.this, "Service destroyed", Toast.LENGTH_SHORT).show();
         Bundle bundle = new Bundle();
         bundle.putBoolean("finished", true);
+        bundle.putString("videoPath", videoPath);
         resultReceiver.send(18, bundle);
         super.onDestroy();
     }

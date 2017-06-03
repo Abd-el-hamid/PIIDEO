@@ -15,7 +15,7 @@ public class RecorderHelper {
     private String audioPath;
     private MediaRecorder mMediaRecorder;
     private static volatile RecorderHelper sInst = null;
-    onRecorderListener mListener;
+    private onRecorderListener mListener;
 
     public static RecorderHelper getInstance() {
         RecorderHelper inst = sInst;
@@ -82,7 +82,7 @@ public class RecorderHelper {
         }
     }
 
-    void stopRecording() {
+    private void stopRecording() {
         mMediaRecorder.stop();
         mMediaRecorder.release();
         mMediaRecorder = null;

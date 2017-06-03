@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.abdel.dell.piideo.activity.PiideoActivity;
 import com.abdel.dell.piideo.activity.PiideoPlayerActivity;
 import com.abdel.dell.piideo.service.PiideoService;
 import com.android.volley.Request;
@@ -30,13 +31,14 @@ public class MyApplication extends Application {
     private static MyApplication mInstance;
     private static FFmpeg ffmpegInstance;
 
-    public void stopService(String outVideo, Context context) {
-        stopService(new Intent(mInstance.getApplicationContext(), PiideoService.class));
+    public void stopService(String outVideo) {
 
-        Intent videoIntent = new Intent(context, PiideoPlayerActivity.class);
-        videoIntent.putExtra("videoPath", outVideo);
-        videoIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(videoIntent);
+        Intent serviceIntent = new Intent(mInstance.getApplicationContext(), PiideoService.class);
+        serviceIntent.putExtra("stop", true);
+
+        serviceIntent.putExtra("videoPath", outVideo);
+        startService(serviceIntent);
+
     }
 
 
