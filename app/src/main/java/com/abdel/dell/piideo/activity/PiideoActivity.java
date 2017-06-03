@@ -53,8 +53,6 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
 
     ValidUtils validUtils;
 
-    private int test = 0;
-
     private ImageButton btnCamera, btnGallery;
 
     private static final DateFormat mFormatter = new SimpleDateFormat("mm:ss:SS");
