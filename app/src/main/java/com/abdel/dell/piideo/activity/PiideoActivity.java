@@ -47,6 +47,7 @@ import in.myinnos.awesomeimagepicker.helpers.ConstantsCustomGallery;
 import in.myinnos.awesomeimagepicker.models.Image;
 import thebat.lib.validutil.ValidUtils;
 
+//This is the main activity
 public class PiideoActivity extends AppCompatActivity implements HoldingButtonLayoutListener, RecorderHelper.onRecorderListener {
 
     private static final String TAG = PiideoActivity.class.getSimpleName();
@@ -400,7 +401,7 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
          *
          * @param handler
          */
-        public PiideoServiceResultReceiver(Handler handler) {
+        PiideoServiceResultReceiver(Handler handler) {
             super(handler);
         }
 
