@@ -63,7 +63,6 @@
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/input_holder"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/activity_main_time_margin_bottom"
             android:text="00:00:00"

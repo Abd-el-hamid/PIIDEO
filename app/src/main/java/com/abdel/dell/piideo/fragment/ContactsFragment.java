@@ -82,21 +82,16 @@ public class ContactsFragment extends Fragment {
         JSONObject ctcJsObj = new JSONObject();
 
         JSONArray ctcJsnArr = new JSONArray();
-        for (Contact c : contacts) {
-            try {
+
+        try {
+            for (Contact c : contacts) {
                 JSONObject jsnObj = new JSONObject();
                 jsnObj.put("phone", c.getPhone());
                 jsnObj.put("name", c.getName());
                 jsnObj.put("exist", c.isExist());
 
                 ctcJsnArr.put(jsnObj);
-
-            } catch (JSONException ex) {
-                Log.e("json exception", ex.toString());
             }
-        }
-
-        try {
             ctcJsObj.put("contacts", ctcJsnArr);
         } catch (JSONException ex) {
             Log.e("json exception", ex.toString());

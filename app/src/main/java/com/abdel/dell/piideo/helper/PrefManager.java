@@ -11,16 +11,16 @@ import java.util.HashMap;
  */
 public class PrefManager {
     // Shared Preferences
-    SharedPreferences pref;
+    private SharedPreferences pref;
 
     // Editor for Shared preferences
-    Editor editor;
+    private Editor editor;
 
     // Context
-    Context _context;
+    private Context _context;
 
     // Shared pref mode
-    int PRIVATE_MODE = 0;
+    private int PRIVATE_MODE = 0;
 
     // Shared preferences file name
     private static final String PREF_NAME = "Piideo";

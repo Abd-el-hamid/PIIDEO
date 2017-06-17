@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -80,7 +81,6 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
     private String imgPath;
     private static final int IMAGES_LIMIT = 5;
     private ImageView imageView;
-    private TextView txImageSelects;
     ArrayList<Image> images;
     private ContentValues cValues;
     private Uri imgUri;
@@ -111,7 +111,6 @@ public class PiideoActivity extends AppCompatActivity implements HoldingButtonLa
 
         mAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        txImageSelects = (TextView) findViewById(R.id.txImageSelects);
         imageView = (ImageView) findViewById(R.id.imageView);
 
         audioPath = getExternalCacheDir() + "/hand.amr";
